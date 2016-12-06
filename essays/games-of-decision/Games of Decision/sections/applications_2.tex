@@ -1,0 +1,35 @@
+In the last section we saw how we could use decision games to mathematically understand better existent political systems, but another obtained advantage is to further design and develop new decision systems for various domains and applications, which should exceed "vanilla" systems in complexity, correctness and effectiveness. The leverage and opportunity that this brings is:
+
+\begin{itemize}
+  \item \textbf{Framework}: The decision games model gives the parts that can be interchanged to obtain different decision systems, better understand the domain, and ultimately solve the issue that begs for the decision instance. The \textit{decision context} is well defined by a normal-form game, and the \textit{decision system} is well modeled by $\alpha$ and $\delta$. A decision system can be designed by implementation of its influence allocation and its resolution system. 
+  
+  \item \textbf{Specialization}: The framework parts allows for the design of specialized systems that fit well the domain and decision instance type.
+  
+  \item \textbf{Modularity and composition}: As seen in the last section, decision instances can be composed to create a dependency graph, creating complex but powerful decision flows. One important product of these is the concept of meta-decision systems, which are decision systems to decide decision systems; when a new issue arrives a community can first decide on what system they should use to resolve the instance, or decide on systems that will be used when types of instances appear.
+  
+  \item \textbf{Automation}: Once we have the framework, issue specialization, and composition of decision systems, the integration of information technologies can be used to automate decision flows, and enable agile and distributed decision making.
+\end{itemize}
+
+Some examples of decision system design reflecting these 4 properties will be exposed in the next subsections.
+
+\subsection{Geolocation based influence allocation}
+
+When issues are geolocated, agents near the issue may need more influence when voting for a decision instance. A strategy for this types of instances would be to allocate the influence over the community as function of the distance between the issue center and the agents location. Linear, logarithmic or exponential functions can be used.
+
+\subsection{Reputation based influence allocation}
+
+Domains like open software development may want to automate repository contributions without the need of a centralized control of the repository, then a distributed decision system for pull requests acceptance and issue control systems can be implemented by allocating influence based on a reputation function, reputation features can be extracted from systems like social networks, for example GitHub or Stack Overflow.
+
+\subsection{Low inertia resolution}
+
+As suggested by Elon Musk in \cite{lowinertia}, a good idea when creating laws may be: letting to remove laws be easier than creating them. To model this we will define two types of decision instances, law creation and law removal, and every decision instance to be binary, which means the set of possible events contains just 2 events, decision resolves positive or negative; for law creation this means law is created or is dropped, and for law removal it means the law is removed or prevails. Now for any law creation instance, $\delta$ will resolve positive if more than 60\% of the sum of all influence votes positive, and for any law removal instance, $\delta$ resolves positive if more than 40\% of the sum of all influence votes positive. 
+
+\subsection{Agent attribute based influence allocation}
+
+In 2016 one of the biggest controversial political decisions was the election of the Brexit (Great Britain decision to exit the European Union), the used decision system was a pure/direct democratic system and the final result was 48.1\% stay, 51.9\% leave; a lot of the controversy comes from questioning the democratic system, specially when most of the voters in favor of staying were young people and most of the voters in favor of leaving were old, and then comes the argument that young people are the most affected by the decision, and that 17 or less years old did not have any influence and voting rights, making them the most affected and suffering from a type of social injustice. 
+
+Assume the last paragraph is right, a possible solution to social justice for similar instances would be to allocate influence based on how much the decision affects the agent, in this case features like age group could be factors for such allocation.
+
+\subsection{Competence based influence allocation}
+
+For sensible decisions like urban development (building bridges and designing the city layout), decision making can be automated by dynamically allocating influence based on a competence based system. Agents can achieve better ranking on the competence system and automatically gain influence to decide over the mentioned decision types.

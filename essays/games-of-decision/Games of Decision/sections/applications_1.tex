@@ -1,0 +1,23 @@
+One of the most important applications of decision systems in human communities is government, in order to model a decision system using our model we just need to define $\alpha$ and $\delta$; in this section we will use our decision systems abstraction to model three well known political systems: autocracy, democracy and representative democracy.
+
+\subsection{Autocracy}
+
+An autocracy is a system of government in which supreme power is concentrated in the hands of one person \cite{politicalterms}. This becomes fairly straightforward to model by letting the influence allocation be $\alpha(i) = 0$ for any $i$ different to the autocracy dictator, and $\alpha(dictator) = 1$. For the resolution function we just return the event that accumulated 1 of influence, which will be the one that the dictator chose, because it is the only agent with influence more than 0.
+
+\subsection{Democracy}
+
+The term originates from the Greek δημοκρατία (dēmokratía) "rule of the people" \cite{greeklexicon}. This means that every agent will be allocated the same positive non-zero influence value, so for any decision instance using a democratic system: 
+
+$$\alpha(i) = a $$
+
+where $a > 0$. For decision resolution we use the $max_e$ function we used in the last section, which effectively yields the event with most influence accumulated, so
+
+$$\delta(E_{inf}) = max_e(E_{inf})$$
+
+\subsection{Representative Democracy}
+
+Representative democracy is a variety of democracy founded on the principle of elected officials representing the whole community, officials are elected through a democratic collective decision of the community, and then officials decide further decision instances using similar democratic systems between them. This encourages the modeling of decision instance composition and instance dependency.
+
+Lets divide the representative democracy system as a 2-phased system, phase 1) elects officials, and phase 2) resolves further decision instances using elected officials. As one may observe all instances on phase 2 depend on phase 1, because the decision context of phase 2 instances are limited by the resolution of phase 1. In this specific case phase 1 subsets the community, and further instances in phase 2 use such subset instead of the original community. 
+
+More formally, let phase 1 be the decision game $ P_1 = (N, A, u, \alpha, \delta)$, let $C$ be the set of candidates, $A$ some subset of the powerset of candidates $A \subset \mathscr{P}(C)$, and $\alpha$ and $\delta$ the democratic system already defined. Then the democratically elected officials will be $\delta(A_{inf})$, and any decision game $(M, B, v, \alpha', \delta')$ will be a democratic representative decision game of $P_1$ iff $M = \delta(A_{inf})$. 

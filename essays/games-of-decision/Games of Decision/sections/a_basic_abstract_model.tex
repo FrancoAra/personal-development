@@ -1,0 +1,59 @@
+One could define a decision instance as a set of mutually exclusive events, which can be voted by the members of an intelligent multi-agent community, and after the decision process involving agent votes, the elected event is considered the resolved event. Then a game emerges by letting the agents be the players, and where each agent receives utility depending on the event which resolves in the decision.  Since utility does not change depending on what other agents vote on, we can create a modified version of a Normal Form Game where each row represents an agent and each column an event from the decision instance, the intersections at cell $(x,y)$ represent the utility obtained by agent $x$ when event $y$ passes. More formally:
+
+\begin{itemize}
+  \item \textit{N is a finite set of n agent, indexed by i;}
+  \item \textit{$A = N \times E $, where $E$ is a finite set of events available to each agent. Each tuple $ a = (i, e) \in A $ is called a vote;}
+  \item \textit{$u = (u_{1}, \dots , u_{n}) $, where $ u_{i} : A \mapsto \mathbb{R} $ is a real-valued utility (or payoff) function for agent $i$.}
+\end{itemize}
+
+This formalization abstracts the concept of a decision game, but we need to expand it in order to model decision resolution. In a decision system a decision resolves depending on two factors, 1) the influence of each member, which represents the power or counting voice measure of the agent, and 2) a function that determines which final event resolves after influence has been accumulated on the different possible events when agents vote. Adding these two abstractions we obtain a complete model for decision systems:
+
+\textbf{Definition 1.0 (Normal form decision game).} \textit{A (finite, n-person) normal-form decision game is a tuple $(N, A, u, \alpha, \delta)$, where:}
+
+\begin{itemize}
+  \item \textit{N is a finite set of n agents, indexed by i;}
+  \item \textit{$A = N \times E $, where $E$ is a finite set of events available to each agent, indexed by m. Each tuple $ a = (i, e) \in A $ is called a vote, and when a game has been resolved $a_{i} = e$ is known as the vote of agent $i$;}
+  \item \textit{$u = (u_{1}, \dots , u_{n}) $, where $ u_{i} : A \mapsto \mathbb{R} $ is a real-valued utility (or payoff) function for agent $i$.}
+  \item \textit{$ \alpha : N \mapsto \mathbb{R} $ is a real-valued function that assigns an initial influence value to every agent.}
+  \item \textit{$ \delta : E_{inf} \mapsto E $, where each $e_{inf} = (s_1, \dots ,s_m) \in E_{inf}$ is a tuple with possible summation of influence $s_j$ for each event $e_j$ after agents vote; $\alpha$ is the mapping from the accumulated influence on each event to the final resolved event of the decision instance.}
+\end{itemize}
+
+In the future, we will refer to $N, A$ and $u$ as the \textit{context of the decision} and to $\alpha$ and $\delta$ as the \textit{decision system}. Also we will call $\alpha$ the influence allocation function and $\delta$ the resolution function.
+
+\subsection{A decision game: the battle of the sexes}
+
+A well-known simple game in Game Theory is the battle of the sexes, the metaphor behind the game goes like this: a husband and wife wish to go to the movies, and they can select among two movies: "Lethal Weapon (LW)" and "Wondrous Love (WL)". They much prefer to go together rather than to separate movies, but while the wife ($p_1$) prefers LW, the husband ($p_2$) being the romantic that he is, he prefers WL. The normal-form game matrix looks like the following:
+
+\begin{center}
+  \begin{tabular}{| l | c | r |}
+    \hline
+     & LW & WL \\ \hline
+    LW & 2, 1 & 0, 0 \\ \hline
+    WL & 0, 0 & 1, 2 \\ \hline
+  \end{tabular}
+\end{center}
+
+But this game alone does not reflect the collective decision that the wife and husband are making together, neither does the system that they will use to decide. But by applying our proposed model we can achieve such task.
+
+Let the woman be the dominant in the relationship, so $\alpha(p_1) = 2$ and $\alpha(p_2) = 1$, and the decision system a simple one: the event which accumulates more influence will be the one that resolves, so 
+
+$$\delta((LW_{inf}, WL_{inf})) = max_e(LW_{inf}, WL_{inf})$$
+
+where $max_e$ returns the event with most influence collected. Then the normal-form decision game matrix is as follows:
+
+\begin{center}
+  \begin{tabular}{| l | c | r |}
+    \hline
+     & LW & WL \\ \hline
+    $p_1$: 2 & 2 & 1 \\ \hline
+    $p_2$: 1 & 1 & 2 \\ \hline
+  \end{tabular}
+\end{center}
+
+We added in the players column the influence of each player, the first row reads "$p_1$: 2" because the woman has 2 of influence value. Being $\delta$ as it is and assuming that both players are rational (they will vote for the event that yields the most utility), then it is evident that Lethal Weapon will be the event that resolves, because then:
+
+$$ A = \{(1, LW), (2, WL)\} $$
+
+and
+
+$$\delta((LW_{inf}, WL_{inf})) = \delta((2, 1)) = max_e(2, 1) = LW$$
