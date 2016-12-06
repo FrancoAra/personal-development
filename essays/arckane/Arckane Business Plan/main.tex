@@ -1,0 +1,109 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[paper=a4paper]{geometry}% http://ctan.org/pkg/geometry
+\usepackage{graphicx}       % front image
+\graphicspath{ {images/} }
+\usepackage{hyperref}       % links and email
+
+% footnotes in tables
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+
+% auto update years
+\usepackage{datenumber}
+\newcounter{dateone}
+\newcounter{datetwo}
+\newcommand{\difftoday}[3]{%
+      \setmydatenumber{dateone}{\the\year}{\the\month}{\the\day}%
+      \setmydatenumber{datetwo}{#1}{#2}{#3}%
+      \addtocounter{datetwo}{-\thedateone}%
+      \the\numexpr-\thedatetwo/365\relax
+}
+
+% opening
+\title{Business Plan\\Arckane}
+\author{Francisco M. Arámburo Torres}
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \maketitle
+    \thispagestyle{empty}   % discard page number
+    \includegraphics[width=2cm]{logo.png}
+    \vfill
+    {\raggedright
+    Francisco M. Arámburo Torres (CEO)\\
+    YourAddress\\
+    \href{franco@arckane.com}{franco@arckane.com}\\
+    }
+\end{titlepage}
+
+\begin{abstract}
+Write here what it's all about.
+\end{abstract}
+
+\pagebreak
+\tableofcontents
+\pagebreak
+
+
+\input{./sections/description.tex}
+\pagebreak
+
+\input{./sections/justification.tex}
+\pagebreak
+
+\input{./sections/business_model.tex}
+\pagebreak
+
+\input{./sections/mvp.tex}
+\pagebreak
+
+\input{./sections/growth_plan.tex}
+%\pagebreak
+
+%% \input{./sections/organizational_structure.tex}
+
+\input{./sections/system_architecture.tex}
+\pagebreak
+
+\input{./sections/timeline_and_milestones.tex}
+
+%% \input{./sections/marketing.tex}
+
+%% \input{./sections/financial_plan.tex}
+
+%% \input{./sections/projected_revenue.tex}
+
+%% \input{./sections/investment.tex}
+
+% Modules to be developed
+
+% \input{./sections/project_galadriel.tex}
+
+% \input{./sections/ontology.tex}
+
+% \input{./sections/distributed_education.tex}
+
+% \input{./sections/skills_virtual_market.tex}
+
+% \input{./sections/advanced_scheduling_system.tex}
+
+% \input{./sections/mentor_apprentice_reputation_system.tex}
+
+% \input{./sections/arckane_organizations_for_tutoring.tex}
+
+% \input{./sections/organizations_skill_profiles.tex}
+
+% \input{./sections/open_skill_rating_api.tex}
+
+% \input{./sections/semantic_search_engine.tex}
+
+% \input{./sections/machine_learning_model_for_recommendation_system.tex}
+
+% \input{./sections/n-person_decision_systems.tex}
+
+% Appendix
+
+% \input{./sections/graphs_and_education.tex}
+\end{document}
