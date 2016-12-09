@@ -13,3 +13,4 @@ Also the logbooks are saved in parseable simple text format for possible future 
 # dec2016 logbook
 
 * |07-12-2016|| Created the repository and made the plan for December 2016, also found two resources for typeclasses laws.
+* |08-12-2016|[[1]](https://en.wikibooks.org/wiki/Haskell/Monoids)[[2]](https://www.youtube.com/watch?v=P82dqVrS8ik)[[3]](http://www.idris-lang.org/example/)| Studied [1] #1, was curious about the monoid instances implementations in Haskell, also learnt how to deal with multiple type class instances of the same type (by wrapping them into a newtype) and how finding good homomorphisms between monoids can help you do nice refactorings. Also watched [2] #1 #2 and got pretty excited about Idris and program proofs as an alternative to property based testing, now I understand the concept of dependant types. That led me to read [3].
